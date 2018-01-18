@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.RoleMapper">
+    <insert id="insertRole" parameterType="pojo.Role">
+        insert into roleTable(role_name,note) values (#{roleName},#{note})
+    </insert>
+    <delete id="deleteRole" parameterType="java.lang.Long">
+        delete from roleTable where id=#{id}
+    </delete>
+    <update id="updateRole" parameterType="pojo.Role">
+        update roleTable set
+            role_name=#{roleName},
+            note=#{note}
+        where
+            id=#{id}
+    </update>
+    <select id="getRole" parameterType="java.lang.Integer" resultType="pojo.Role">
+        select id,role_name as roleName,note from roleTable
+            where id=#{id}
+    </select>
+
+</mapper>
